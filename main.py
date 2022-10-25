@@ -4,6 +4,8 @@ import random
 from Game import Main
 from Enemy import ShadowEnemy
 
+from tkinter import simpledialog
+
 pygame.init()
 
 WIDTH = 1200
@@ -44,6 +46,8 @@ class Player(pygame.sprite.Sprite and ShadowEnemy):
         self.rect.center = (x,y)
         self.round_time = 0
         self.slow_time = 0
+
+        self.name = simpledialog.askstring("Game","What is your name ? ")
 
     def update(self):
 
@@ -130,6 +134,13 @@ class Player(pygame.sprite.Sprite and ShadowEnemy):
             self.text_victory = "Zvitezil jsi Stitskni mezernik a hraj znovu"
             self.text_win = self.winner_font.render(self.text_victory,True,(255,255,0))
             screen.blit(self.text_win,(WIDTH//2 - 240,HEIGHT//2 -40))
+
+            with open("winner_list.txt","w") as file:
+                self.list_winner = []
+                self.list_winner.append(self.name)
+                
+                for self.username in self.list_winner:
+                    file.write(f"Winner is : {self.username} \n")
 
             keys = pygame.key.get_pressed()
 
