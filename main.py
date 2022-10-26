@@ -11,6 +11,7 @@ pygame.init()
 WIDTH = 1200
 HEIGHT = 650
 
+
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("Harry Potter Game")
 
@@ -27,9 +28,7 @@ magic_voice.set_volume(0.2)
 
 fps = 60
 clock = pygame.time.Clock()
-
     
-
 class Player(pygame.sprite.Sprite and ShadowEnemy):
     def __init__(self,x,y,group_of_enemy):
         super().__init__(0,0)
@@ -46,8 +45,8 @@ class Player(pygame.sprite.Sprite and ShadowEnemy):
         self.rect.center = (x,y)
         self.round_time = 0
         self.slow_time = 0
-
         self.name = simpledialog.askstring("Game","What is your name ? ")
+
 
     def update(self):
 
@@ -81,7 +80,7 @@ class Player(pygame.sprite.Sprite and ShadowEnemy):
     def move(self):
         keys = pygame.key.get_pressed()
 
-        self.speed = 15
+        self.speed = 18
 
         if(keys[pygame.K_UP] and self.rect.top > 85):
             self.rect.y -= self.speed
@@ -135,8 +134,9 @@ class Player(pygame.sprite.Sprite and ShadowEnemy):
             self.text_win = self.winner_font.render(self.text_victory,True,(255,255,0))
             screen.blit(self.text_win,(WIDTH//2 - 240,HEIGHT//2 -40))
 
+            self.list_winner:list = []
+
             with open("winner_list.txt","w") as file:
-                self.list_winner = []
                 self.list_winner.append(self.name)
                 
                 for self.username in self.list_winner:
