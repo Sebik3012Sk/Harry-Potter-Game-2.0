@@ -7,6 +7,8 @@ pygame.init()
 WIDTH = 1200
 HEIGHT = 650
 
+
+
 class ShadowEnemy(pygame.sprite.Sprite):
     def __init__(self,x,y):
         super().__init__()

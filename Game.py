@@ -12,3 +12,4 @@ class Main(pygame.sprite.Sprite):
         self.scaleImg = pygame.transform.scale(self.image,(WIDTH,HEIGHT))
         self.rect = self.scaleImg.get_rect()
         self.rect.center = (x_pos,y_pos)
+        
